@@ -94,16 +94,5 @@ router.post(
   }
 );
 
-// Route 3 : Get loggedin User Details using : POST "/api/auth/getuser". Login required
-router.post("/getuser",fetchUser,async (req, res) => {
-    try {
-      userId = req.user.id;
-      let user = await User.findById(userId).select('-password');
-      res.send(user);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({success: false, error:"Some Error occured"});
-    }
-  })
 
 module.exports = router;
